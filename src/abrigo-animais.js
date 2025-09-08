@@ -41,13 +41,6 @@ class AbrigoAnimais {
       const a = this.verificaBrinquedo(arrayBrinquedosPessoa1);
       const b = this.verificaBrinquedo(arrayBrinquedosPessoa2);
 
-      
-
-
-
-      
-      
-
       return { lista: resultado.sort()};
 
     } catch(e){
@@ -60,3 +53,9 @@ class AbrigoAnimais {
 
 }
 
+  
+  
+
+
+
+export { AbrigoAnimais as AbrigoAnimais };
