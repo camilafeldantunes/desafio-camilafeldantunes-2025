@@ -11,6 +11,16 @@ class AbrigoAnimais {
       Loco: {tipo: "jabuti", brinquedo:["SKATE", "RATO"]},
     }
     this.brinquedo = ["RATO", "BOLA", "LASER", "CAIXA", "NOVELO", "SKATE"];
+    this.gatos = ["Mimi", "Fofo", "Zero"];
+  }
+
+  verificaBrinquedo(brinquedoPessoa){
+    for (let brinquedo of listaPessoa) {
+      if (!this.brinqValidos.includes(brinquedo)) {
+       return { erro: "Brinquedo inválido" };
+  }
+}
+     
   }
 
 
@@ -21,7 +31,6 @@ class AbrigoAnimais {
       var arrayAnimais = ordemAnimais.split(",");
       var resultado = [];
 
-
       for(var nome of arrayAnimais){
         var animal = this.animais[nome];
           if(!animal){
@@ -29,20 +38,15 @@ class AbrigoAnimais {
           }
       }
 
-      var brinquedoAnimal = animal.brinquedo;
+      const a = this.verificaBrinquedo(arrayBrinquedosPessoa1);
+      const b = this.verificaBrinquedo(arrayBrinquedosPessoa2);
 
-      var pessoaUm = verificaBrinquedos(brinquedoAnimal, arrayBrinquedosPessoa1);
-      var pessoaDois = verificaBrinquedos(brinquedoAnimal, arrayBrinquedosPessoa2);
-
-     if (pessoaUm && !pessoaDois) {
-        resultado.push(nome + " - pessoa 1");
-      } else if (!pessoaUm && pessoaDois) {
-        resultado.push(nome + " - pessoa 2");
-      } else {
-        resultado.push(nome + " - abrigo");
-      }
+      
 
 
+
+      
+      
 
       return { lista: resultado.sort()};
 
@@ -55,24 +59,4 @@ class AbrigoAnimais {
   }
 
 }
-
-    verificaBrinquedos(listaAnimalBrinquedo, listaPessoaBrinquedo){
-      var i = 0;
-      for(var brinquedo of listaPessoaBrinquedo){
-        if(brinquedo == listaAnimalBrinquedo[i]){
-          i++;
-      }
-      if (i == listaAnimal.length){
-        return true;
-      }
-      return i == listaAnimal.length;
-        
-    }
-  }
-  
-  
-
-
-
-export { AbrigoAnimais as AbrigoAnimais };
 
