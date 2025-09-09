@@ -1,3 +1,18 @@
+
+function verificaBrinquedo(listaBrinquedoPessoa, listaBrinquedoAnimais){
+    var i = 0;
+    for(var brinquedoss of listaBrinquedoPessoa){
+        if(brinquedoss == listaBrinquedoAnimais[i]){
+          i++;
+        } 
+        if(i == listaBrinquedoAnimais.length){
+          return true;
+        }
+    }
+    return false;
+  }
+
+
 class AbrigoAnimais {
 
   constructor(){
@@ -12,18 +27,10 @@ class AbrigoAnimais {
     }
     this.brinquedo = ["RATO", "BOLA", "LASER", "CAIXA", "NOVELO", "SKATE"];
     this.gatos = ["Mimi", "Fofo", "Zero"];
+    this.jabuti = ["Loco"];
   }
 
-  verificaBrinquedo(brinquedoPessoa){
-    for (let brinquedo of listaPessoa) {
-      if (!this.brinqValidos.includes(brinquedo)) {
-       return { erro: "Brinquedo inválido" };
-  }
-}
-     
-  }
-
-
+  
   encontraPessoas(brinquedosPessoa1, brinquedosPessoa2, ordemAnimais) {
     try{
       var arrayBrinquedosPessoa1 = brinquedosPessoa1.split(",");
@@ -38,10 +45,38 @@ class AbrigoAnimais {
           }
       }
 
-      const a = this.verificaBrinquedo(arrayBrinquedosPessoa1);
-      const b = this.verificaBrinquedo(arrayBrinquedosPessoa2);
+      var animaisPessoaUm = 0;
+      var animaisPessoaDois = 0;
 
-      return { lista: resultado.sort()};
+      for(var nome of arrayAnimais){
+        var listaBrinquedoAnimais = this.animais[nome].brinquedo;
+        var pessoa1 = verificaBrinquedo(arrayBrinquedosPessoa1, listaBrinquedoAnimais);
+        var pessoa2 = verificaBrinquedo(arrayBrinquedosPessoa2, listaBrinquedoAnimais);
+      
+      
+        if(pessoa1 == true && pessoa2 != true && animaisPessoaUm < 3){
+          resultado.push(nome + " - pessoa 1");
+          animaisPessoaUm++;
+        }else if(pessoa1 != true && pessoa2 == true && animaisPessoaDois < 3){
+          resultado.push(nome + " - pessoa 2");
+          animaisPessoaDois++;
+        }else if(pessoa1 == true && pessoa2 == true){
+          resultado.push(nome + "- abrigo");
+        }else{
+          resultado.push(nome + " - abrigo");
+        }
+      
+      
+      }
+
+
+      return { 
+        lista: resultado.sort((a,b) => {
+          var nomeUm = a.split(" - ")[0];
+          var nomeDois = b.split(" - ")[0];
+          return nomeUm.localeCompare(nomeDois);
+        } )
+      };
 
     } catch(e){
 
