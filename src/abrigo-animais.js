@@ -45,6 +45,22 @@ class AbrigoAnimais {
           }
       }
 
+      var animaisDuplicados = [...new Set(arrayAnimais)];
+      if(animaisDuplicados.length !== arrayAnimais.length){
+        return { erro: "Animal inválido"};
+      }
+
+      var brinquedoDuplicadosP1 = [...new Set(arrayBrinquedosPessoa1)];
+      var brinquedoDuplicadosP2 = [...new Set(arrayBrinquedosPessoa2)];
+
+      if(brinquedoDuplicadosP1.length !== arrayBrinquedosPessoa1.length || brinquedoDuplicadosP2.length !== arrayBrinquedosPessoa2.length){
+        return { erro: "Brinquedo inválido"};
+      }
+
+
+      
+
+
       var animaisPessoaUm = 0;
       var animaisPessoaDois = 0;
 
