@@ -45,6 +45,19 @@ class AbrigoAnimais {
           }
       }
 
+       for(var nomeBrinquedos of arrayBrinquedosPessoa1){
+         if(!this.brinquedo.includes(nomeBrinquedos)){
+            return { erro: "Brinquedo inválido"};
+         }
+      }
+
+      for(var nomeBrinquedos of arrayBrinquedosPessoa2){
+         if(!this.brinquedo.includes(nomeBrinquedos)){
+            return { erro: "Brinquedo inválido"};
+         }
+      }
+      
+
       var animaisDuplicados = [...new Set(arrayAnimais)];
       if(animaisDuplicados.length !== arrayAnimais.length){
         return { erro: "Animal inválido"};
